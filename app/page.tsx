@@ -1,9 +1,9 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Services from "@/components/Services";
-import Portfolio from "@/components/Portfolio";
-import Blog from "@/components/Blog";
+import Research from "@/components/Research";
+import Projects from "@/components/Projects";
+import Books from "@/components/Books";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -14,9 +14,9 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <Services />
-        <Portfolio />
-        <Blog />
+        <Research />
+        <Projects />
+        <Books />
         <Contact />
       </main>
       <Footer />
