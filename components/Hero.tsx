@@ -19,21 +19,16 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden bg-[#f8f9fc]"
+      className="relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-white via-[#f9fbfc] to-[#eef7f6] pt-[90px]"
     >
       {/* ——— Background image (right side, subtle) ——— */}
-      <div className="absolute inset-y-0 right-0 hidden w-[45%] lg:block">
-        {/* Replace with Kofi's professional headshot */}
+      <div className="absolute right-0 top-20 hidden h-[88%] w-[42%] lg:block">
         <Image
-          src="https://picsum.photos/seed/kofi-hero/1200/1600"
-          alt="Kofi Ofori-Mensah, digital marketing researcher and founder of NeuroDigital Support"
+          src="/Images/Hero.png"
+          alt="Hero"
           fill
-          priority
-          sizes="45vw"
-          className="object-cover object-top"
+          className="object-cover object-center"
         />
-        {/* Soft fade on left edge so text reads cleanly */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#f8f9fc] to-transparent" />
       </div>
 
       {/* ——— Content (left side) ——— */}
@@ -41,13 +36,13 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 mx-auto w-full max-w-[1260px] px-5 pt-40 pb-24 lg:pt-44 lg:pb-0"
+        className="relative z-10 mx-auto flex w-full max-w-[1380px] items-center justify-between px-10 xl:px-14"
       >
-        <div className="max-w-2xl">
+        <div className="max-w-[620px] lg:py-6">
           {/* Eyebrow */}
           <motion.p
             variants={item}
-            className="text-xs font-medium tracking-[4px] text-[#717173]"
+            className="inline-flex items-center rounded-full bg-[#0d7377]/10 px-5 py-2 text-[11px] font-semibold uppercase tracking-[3px] text-[#0d7377]"
           >
             BUSINESS RESEARCHER, Marketing &amp; FOUNDER
           </motion.p>
@@ -55,19 +50,23 @@ export default function Hero() {
           {/* Headline */}
           <motion.h1
             variants={item}
-            className="mt-6 text-4xl font-extrabold leading-[1.15] text-[#1f1f25] md:text-5xl lg:text-[56px]"
+            className="mt-6 text-[40px] font-extrabold leading-[1.05] text-[#1f1f25] md:text-[40px] lg:text-[50px]"
           >
             Kofi Ofori-Mensah
-            <span className="mt-2 block text-3xl font-semibold leading-snug text-[#717173] md:text-4xl lg:text-[40px]">
+            <span className="mt-3 block text-[34px] font-semibold leading-tight text-[#717173] md:text-[34px] lg:text-[36px]">
               Building a More Inclusive Internet for{" "}
-              <span style={{ color: ACCENT }}>Neurodivergent Adults</span>
+              <span className="relative inline-block">
+                <span className="relative z-10 text-[#0d7377]">
+                  Neurodivergent Adults
+                </span>
+              </span>
             </span>
           </motion.h1>
 
           {/* Sub-headline */}
           <motion.p
             variants={item}
-            className="mt-6 max-w-xl text-base leading-relaxed text-[#717173] md:text-lg"
+            className="mt-3 max-w-[560px] text-lg leading-8 text-[#6b7280]"
           >
             London-based business consultant, MSc Digital Marketing researcher
             at the University of Roehampton, founder of{" "}
@@ -79,20 +78,23 @@ export default function Hero() {
           </motion.p>
 
           {/* CTAs */}
-          <motion.div variants={item} className="mt-10 flex flex-wrap gap-4">
+          <motion.div variants={item} className="mt-4 flex flex-wrap gap-4">
             {/* Primary CTA */}
             <a
               href="#contact"
-              className="inline-block rounded px-8 py-4 text-sm font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+              className="group inline-flex h-14 items-center justify-center rounded-xl bg-[#0d7377] px-8 text-sm font-semibold uppercase tracking-[2px] text-white transition-all duration-500 hover:-translate-y-1"
               style={{ backgroundColor: ACCENT }}
             >
               Get in Touch
+              <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
             </a>
 
             {/* Secondary CTA */}
             <a
               href="#research"
-              className="inline-block rounded border-2 px-8 py-4 text-sm font-semibold uppercase tracking-[2px] transition-all duration-300 hover:-translate-y-0.5"
+              className="group inline-flex h-14 items-center rounded-xl border border-[#0d7377] bg-white px-10 text-sm font-semibold uppercase tracking-[2px] text-[#0d7377] transition-all duration-500 hover:-translate-y-1"
               style={{ borderColor: ACCENT, color: ACCENT }}
             >
               Read the Research
@@ -104,12 +106,12 @@ export default function Hero() {
       {/* ——— Mobile hero image (below content on small screens) ——— */}
       <div className="absolute bottom-0 right-0 h-[35%] w-full lg:hidden">
         <Image
-          src="https://picsum.photos/seed/kofi-hero/1200/1600"
+          src="/Images/Hero.png"
           alt="Kofi Ofori-Mensah"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-top opacity-30"
+          className="object-contain object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-transparent to-[#f8f9fc]" />
       </div>

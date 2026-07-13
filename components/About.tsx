@@ -154,7 +154,7 @@ export default function About() {
           <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-lg shadow-2xl">
             {/* Replace with Kofi's real photo */}
             <Image
-              src="/Images/portfolio-img.png"
+              src="/Images/About.jpeg"
               alt="Kofi Ofori-Mensah presenting research at the University of Roehampton"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
