@@ -1,12 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import {
-  FiMenu,
-  FiX,
-  FiLinkedin,
-  FiTwitter,
-} from "react-icons/fi";
+import { FiMenu, FiX, FiLinkedin, FiTwitter } from "react-icons/fi";
 import { SiOrcid } from "react-icons/si";
 
 const links = [
@@ -65,49 +60,58 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out ${
           scrolled
-            ? "bg-white/95 py-2 shadow-md backdrop-blur-sm"
-            : "bg-transparent py-4"
+            ? "bg-white/70 backdrop-blur-xl shadow-[0_12px_40px_rgba(15,23,42,.08)] py-4"
+            : "bg-transparent py-5"
         }`}
       >
-        <div className="mx-auto flex max-w-[1260px] items-center px-5">
+        <div className="mx-auto flex max-w-345 items-center px-9 xl:px-10">
           {/* ——— Left: Text Logo + Nav ——— */}
           <div className="flex items-center">
             {/* Text logo — replace with image if client provides one */}
             <a
               href="#home"
-              className="shrink-0 text-xl font-bold tracking-tight text-[#1f1f25]"
+              className="group flex items-center text-[31px] font-bold tracking-tight"
             >
-              Kofi<span style={{ color: ACCENT }}>.</span>
+              <span>Kofi</span>
+              <span
+                className="
+                ml-1
+                "
+                style={{ color: ACCENT }}
+              >
+                •
+              </span>
             </a>
 
             {/* Desktop nav */}
-            <nav className="ml-10 hidden items-center gap-8 lg:flex">
+            <nav className="ml-14 hidden items-center gap-12 xl:gap-12 lg:flex">
               {links.map((l) => {
                 const isActive = activeSection === l.href;
                 return (
                   <a
                     key={l.href}
                     href={l.href}
-                    className="relative pb-4 text-[14px] font-medium transition-colors duration-200"
+                    className={`group relative pb-2 text-[15px] font-medium tracking-[0.3px]
+                    transition-all duration-300 ease-out
+                    ${isActive ? "text-[#0d7377]" : "text-[#1f1f25] hover:text-[#0d7377]"}`}
                     style={{ color: isActive ? ACCENT : "#1f1f25" }}
-                    onMouseEnter={(e) => {
-                      if (!isActive)
-                        (e.target as HTMLElement).style.color = ACCENT;
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isActive)
-                        (e.target as HTMLElement).style.color = "#1f1f25";
-                    }}
                   >
                     {l.label}
                     <span
-                      className="absolute bottom-0 left-0 h-[3px] rounded-full transition-all duration-300"
-                      style={{
-                        backgroundColor: ACCENT,
-                        width: isActive ? "100%" : "0%",
-                      }}
+                      className={`absolute left-0 -bottom-1.5
+                        h-0.5
+                        rounded-full
+                        bg-[#0d7377]
+                        transition-all
+                        duration-500
+                        ease-out
+                        ${
+                          isActive
+                            ? "w-full opacity-100"
+                            : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"
+                        }`}
                     />
                   </a>
                 );
@@ -143,10 +147,38 @@ export default function Header() {
             {/* CTA — "Get in Touch" */}
             <a
               href="#contact"
-              className="ml-2 rounded px-7 py-3 text-xs font-semibold uppercase tracking-[2px] text-white transition-all duration-300 hover:opacity-90"
+              className="
+              group
+              ml-6
+              flex
+              items-center
+              justify-center
+              rounded-md
+              bg-[#0d7377]
+              px-8
+              py-3.5
+              text-xs
+              font-semibold
+              uppercase
+              tracking-[2px]
+              text-white
+              transition-all
+              duration-500
+              hover:-translate-y-1
+              "
               style={{ backgroundColor: ACCENT }}
             >
               Get in Touch
+              <span
+                className="
+              ml-2
+              transition-transform
+              duration-300
+              group-hover:translate-x-1
+              "
+              >
+                →
+              </span>
             </a>
           </div>
 
@@ -160,7 +192,21 @@ export default function Header() {
                     key={s.label}
                     href={s.href}
                     aria-label={s.label}
-                    className="text-[#1f1f25]/80 transition-colors"
+                    className="
+                    flex
+                    items-center
+                    justify-center
+                    w-10
+                    h-10
+                    rounded-full
+                    transition-all
+                    duration-300
+                    text-[#1f1f25]
+                    hover:bg-[#0d7377]
+                    hover:text-white
+                    hover:-translate-y-1
+                    hover:shadow-lg
+                    "
                   >
                     <Icon size={15} />
                   </a>
@@ -180,14 +226,14 @@ export default function Header() {
 
       {/* ——— Mobile Drawer (slides RIGHT → LEFT) ——— */}
       <div
-        className={`fixed inset-0 z-[998] bg-black/40 transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 z-998 bg-black/40 transition-opacity duration-300 lg:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setOpen(false)}
       />
 
       <nav
-        className={`fixed inset-y-0 right-0 z-[999] w-[300px] bg-white shadow-2xl transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed inset-y-0 right-0 z-999 w-75 bg-white shadow-2xl transition-transform duration-300 ease-in-out lg:hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -214,7 +260,7 @@ export default function Header() {
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="relative block py-[14px]"
+                  className="relative block py-3.5"
                 >
                   <span
                     className="text-[15px] font-medium transition-colors"
@@ -224,7 +270,7 @@ export default function Header() {
                   </span>
                   {isActive && (
                     <span
-                      className="absolute bottom-[10px] left-0 h-[2px] w-[120px]"
+                      className="absolute bottom-2.5 left-0 h-0.5 w-30"
                       style={{ backgroundColor: ACCENT }}
                     />
                   )}

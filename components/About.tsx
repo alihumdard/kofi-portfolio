@@ -14,9 +14,9 @@ const tabs = [
       <>
         <p className="leading-relaxed text-[#717173]">
           Kofi Ofori-Mensah works at the intersection of digital marketing,
-          neurodiversity, and platform ethics. His research examines how autistic
-          and neurodivergent adults experience social media marketing in the UK,
-          and his venture,{" "}
+          neurodiversity, and platform ethics. His research examines how
+          autistic and neurodivergent adults experience social media marketing
+          in the UK, and his venture,{" "}
           <span className="font-semibold text-[#1f1f25]">
             NeuroDigital Support
           </span>
@@ -89,8 +89,7 @@ const tabs = [
           {
             role: "Support Worker",
             org: "Brookhaven Care",
-            detail:
-              "Supporting adults with autism and complex needs.",
+            detail: "Supporting adults with autism and complex needs.",
           },
           {
             role: "Conference Speaker",
@@ -125,13 +124,11 @@ const tabs = [
           },
           {
             title: "Author of Five Books",
-            meta:
-              "The Invisible Users · Shattered Bonds · Neurodiversity Beyond the West · Neurodigital Support · The Invisible Struggle",
+            meta: "The Invisible Users · Shattered Bonds · Neurodiversity Beyond the West · Neurodigital Support · The Invisible Struggle",
           },
           {
             title: "Founder, NeuroDigital Support",
-            meta:
-              "A digital ecosystem for neurodivergent digital wellbeing with NuroTok as its flagship product.",
+            meta: "A digital ecosystem for neurodivergent digital wellbeing with NuroTok as its flagship product.",
           },
         ].map((item) => (
           <li key={item.title}>
@@ -157,7 +154,7 @@ export default function About() {
           <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-lg shadow-2xl">
             {/* Replace with Kofi's real photo */}
             <Image
-              src="https://picsum.photos/seed/kofi-about/800/1000"
+              src="/Images/portfolio-img.png"
               alt="Kofi Ofori-Mensah presenting research at the University of Roehampton"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
@@ -187,7 +184,9 @@ export default function About() {
                 style={{
                   color: active === i ? ACCENT : "#1f1f25",
                   borderBottom:
-                    active === i ? `2px solid ${ACCENT}` : "2px solid transparent",
+                    active === i
+                      ? `2px solid ${ACCENT}`
+                      : "2px solid transparent",
                 }}
                 onMouseEnter={(e) => {
                   if (active !== i)

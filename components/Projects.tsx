@@ -10,7 +10,7 @@ const projects = [
   {
     title: "Asitina Pa",
     subtitle: "Impact-Investment Agricultural Venture",
-    image: "https://picsum.photos/seed/kofi-asitina/800/1000",
+    image: "/Images/astina-pa-image.png",
     description:
       "Building corporate-managed agricultural towns in Ghana that integrate sustainable farming, green infrastructure, housing, and community services — designed for nationwide replication.",
     highlights: [
@@ -25,7 +25,7 @@ const projects = [
   {
     title: "City Forest Ghana",
     subtitle: "Urban Forestry & Green Infrastructure",
-    image: "https://picsum.photos/seed/kofi-cityforest/800/1000",
+    image: "/Images/second.png",
     description:
       "Asitina Pa's green infrastructure subsidiary — a professional urban forestry company that plans, plants, and maintains green spaces for governments, developers, and institutions across Ghana, modelled on UK urban forestry practice.",
     highlights: [
@@ -82,7 +82,10 @@ export default function Projects() {
                   {/* Highlights */}
                   <ul className="mt-5 flex-1 space-y-2">
                     {p.highlights.map((h) => (
-                      <li key={h} className="flex items-start gap-2 text-sm text-[#717173]">
+                      <li
+                        key={h}
+                        className="flex items-start gap-2 text-sm text-[#717173]"
+                      >
                         <span
                           className="mt-1.5 h-2 w-2 shrink-0 rounded-full"
                           style={{ backgroundColor: ACCENT }}

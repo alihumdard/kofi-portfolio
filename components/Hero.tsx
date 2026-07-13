@@ -49,7 +49,7 @@ export default function Hero() {
             variants={item}
             className="text-xs font-medium tracking-[4px] text-[#717173]"
           >
-            BUSINESS RESEARCHER &amp; FOUNDER
+            BUSINESS RESEARCHER, Marketing &amp; FOUNDER
           </motion.p>
 
           {/* Headline */}
