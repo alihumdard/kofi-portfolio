@@ -19,15 +19,17 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden bg-gradient-to-br from-white via-[#f9fbfc] to-[#eef7f6] pt-[90px]"
+      className="relative flex min-h-screen items-center overflow-hidden bg-linear-to-br from-white via-[#f9fbfc] to-[#eef7f6] pt-22.5"
     >
       {/* ——— Background image (right side, subtle) ——— */}
-      <div className="absolute right-0 top-20 hidden h-[88%] w-[42%] lg:block">
+      <div className="absolute right-6 top-20 hidden h-[86%] w-[42%] overflow-hidden rounded-[28px] lg:block">
         <Image
           src="/Images/Hero.png"
           alt="Hero"
           fill
-          className="object-cover object-center"
+          priority
+          sizes="42vw"
+          className="object-cover object-top transition-transform duration-700 hover:scale-[1.03]"
         />
       </div>
 
@@ -36,9 +38,9 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 mx-auto flex w-full max-w-[1380px] items-center justify-between px-10 xl:px-14"
+        className="relative z-10 mx-auto flex w-full max-w-345 items-center justify-between px-10 xl:px-14"
       >
-        <div className="max-w-[620px] lg:py-6">
+        <div className="max-w-155 lg:py-6">
           {/* Eyebrow */}
           <motion.p
             variants={item}
@@ -66,7 +68,7 @@ export default function Hero() {
           {/* Sub-headline */}
           <motion.p
             variants={item}
-            className="mt-3 max-w-[560px] text-lg leading-8 text-[#6b7280]"
+            className="mt-3 max-w-140 text-lg leading-8 text-[#6b7280]"
           >
             London-based business consultant, MSc Digital Marketing researcher
             at the University of Roehampton, founder of{" "}
@@ -113,7 +115,7 @@ export default function Hero() {
           sizes="100vw"
           className="object-contain object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent to-[#f8f9fc]" />
+        <div className="absolute inset-0 bg-linear-to-t from-transparent to-[#f8f9fc]" />
       </div>
     </section>
   );

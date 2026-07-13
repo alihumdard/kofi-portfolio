@@ -12,7 +12,7 @@ const tabs = [
     label: "Overview",
     content: (
       <>
-        <p className="leading-relaxed text-[#717173]">
+        <p className="leading-8 text-[#717173]">
           Kofi Ofori-Mensah works at the intersection of digital marketing,
           neurodiversity, and platform ethics. His research examines how
           autistic and neurodivergent adults experience social media marketing
@@ -66,7 +66,7 @@ const tabs = [
   {
     label: "Current Work",
     content: (
-      <ul className="space-y-5">
+      <ul className="relative space-y-8 border-l-2 border-[#0d7377]/20 pl-8">
         {[
           {
             role: "MSc Digital Marketing",
@@ -147,47 +147,52 @@ export default function About() {
   const [active, setActive] = useState(0);
 
   return (
-    <section id="about" className="scroll-mt-20 py-24">
+    <section
+      id="about"
+      className="scroll-mt-20 bg-gradient-to-b from-white via-[#fcfcfc] to-[#f7fbfb] py-28"
+    >
       <div className="mx-auto grid max-w-[1260px] items-start gap-14 px-5 lg:grid-cols-2">
         {/* ——— Left: Photo ——— */}
         <Reveal>
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-lg shadow-2xl">
+          <div className="group relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[30px] border border-gray-200 bg-white shadow-[0_35px_80px_rgba(0,0,0,.12)]">
             {/* Replace with Kofi's real photo */}
             <Image
-              src="/Images/About.jpeg"
+              src="/Images/Portfolio-img.png"
               alt="Kofi Ofori-Mensah presenting research at the University of Roehampton"
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
+              className="object-cover transition-all duration-700 group-hover:scale-105"
             />
           </div>
         </Reveal>
 
         {/* ——— Right: Content with tabs ——— */}
         <Reveal delay={0.15}>
-          <h2 className="text-4xl font-extrabold text-[#1f1f25] md:text-5xl">
+          <div className="mb-2 inline-flex items-center rounded-full bg-[#0d7377]/10 px-5 py-2 text-sm font-semibold uppercase tracking-[0.15em] text-[#0d7377]">
             About Me
+          </div>
+          <h2 className="mt-2 text-2xl font-black leading-tight text-[#1f1f25] md:text-2xl xl:text-2xl">
+            Building Research That Creates
+            <br />
+            <span style={{ color: ACCENT }}>
+              A More Inclusive Digital World
+            </span>
           </h2>
-          <p className="mt-4 text-[#717173]">
-            Researcher, founder, author, and support worker — building at the
-            intersection of digital marketing, neurodiversity, and platform
-            ethics.
+          <p className="mt-2 max-w-2xl text-md leading-8 text-[#717173]">
+            Researcher, Founder, Author and Support Worker — dedicated to
+            improving digital wellbeing through inclusive research,
+            neurodiversity advocacy and ethical technology.
           </p>
 
           {/* Tab buttons */}
-          <div className="mt-8 flex flex-wrap gap-6 border-b border-gray-200">
+          <div className="mt-4 flex flex-wrap gap-3 border-b border-gray-200">
             {tabs.map((t, i) => (
               <button
                 key={t.label}
                 onClick={() => setActive(i)}
-                className="-mb-px pb-3 text-sm font-semibold transition-colors"
-                style={{
-                  color: active === i ? ACCENT : "#1f1f25",
-                  borderBottom:
-                    active === i
-                      ? `2px solid ${ACCENT}`
-                      : "2px solid transparent",
-                }}
+                className={`rounded-t-xl cursor-pointer px-5 py-3 text-sm font-semibold transition-all duration-300 ${
+                  active === i ? "bg-white shadow-md" : "hover:bg-gray-100"
+                }`}
                 onMouseEnter={(e) => {
                   if (active !== i)
                     (e.target as HTMLElement).style.color = ACCENT;
@@ -207,7 +212,11 @@ export default function About() {
             <motion.div
               key={active}
               initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
               className="mt-8"

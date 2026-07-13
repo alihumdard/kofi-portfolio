@@ -9,28 +9,28 @@ const ACCENT = "#0d7377";
 const books = [
   {
     title: "The Invisible Users",
-    image: "https://picsum.photos/seed/kofi-book1/600/900",
-    href: "#",
+    image: "/Images/About.jpeg",
+    href: "https://a.co/d/06dbkgJF",
   },
   {
     title: "Shattered Bonds",
-    image: "https://picsum.photos/seed/kofi-book2/600/900",
+    image: "/Images/shatterd.jpeg",
     href: "#",
   },
   {
     title: "Neurodiversity Beyond the West",
-    image: "https://picsum.photos/seed/kofi-book3/600/900",
-    href: "#",
+    image: "/Images/neuro.jpeg",
+    href: "https://a.co/d/0iNoTQdn",
   },
   {
     title: "Neurodigital Support",
-    image: "https://picsum.photos/seed/kofi-book4/600/900",
-    href: "#",
+    image: "/Images/support.jpeg",
+    href: "https://a.co/d/090W2MGH",
   },
   {
     title: "The Invisible Struggle",
-    image: "https://picsum.photos/seed/kofi-book5/600/900",
-    href: "#",
+    image: "/Images/About.jpeg",
+    href: "https://a.co/d/06dbkgJF",
   },
 ];
 
@@ -46,10 +46,7 @@ export default function Books() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {books.map((book, i) => (
             <Reveal key={book.title} delay={(i % 5) * 0.08}>
-              <a
-                href={book.href}
-                className="group block"
-              >
+              <a href={book.href} className="group block">
                 {/* Book cover */}
                 <div className="relative aspect-[2/3] overflow-hidden rounded-lg shadow-md transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl">
                   {/* Replace with real book cover images */}
