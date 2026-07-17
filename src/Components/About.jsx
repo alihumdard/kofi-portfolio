@@ -161,9 +161,7 @@ export default function About() {
             viewport={{ once: true }}
           >
             <div
-              className="inline-flex rounded-full border border-[#E6D2A3] bg-[#FFF9EE] px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] sm:px-5
-                "
-            >
+             className="inline-flex w-auto items-center justify-center whitespace-nowrap rounded-full border border-amber-300 bg-white px-4 py-2 text-xs font-semibold tracking-wide text-amber-800 sm:px-5 sm:py-2.5 sm:text-sm"            >
               <span className="text-[#C28A00] text-sm font-semibold tracking-[0.25em] uppercase">
                 About Me
               </span>

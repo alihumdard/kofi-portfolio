@@ -251,7 +251,7 @@ export default function Header() {
             </div>
 
             {/* CTA Button */}
-            <div className="px-6 py-6 mt-2">
+            <div className="mt-auto px-6 pt-6 pb-6">
               <a
                 href="#contact"
                 onClick={() => setMobileMenu(false)}
