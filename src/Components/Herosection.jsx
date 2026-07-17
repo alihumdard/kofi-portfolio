@@ -20,7 +20,7 @@ export default function HeroSection() {
       <div className="relative mx-auto max-w-7xl px-5 py-10 sm:px-6 md:px-8 md:py-14 lg:px-10 lg:py-0">
         {/* Top row: eyebrow + sensory-mode toggle */}
         <div className="mb-4 py-2 mx-auto max-w-[320px] sm:max-w-95 md:max-w-115 lg:mx-0 lg:max-w-none">
-          <div className="flex w-full items-center justify-center whitespace-nowrap rounded-full border border-amber-300 bg-white px-3 py-1.5 text-[10px] font-semibold tracking-wide text-amber-800 sm:px-5 sm:py-2 sm:text-xs lg:inline-flex lg:w-auto lg:justify-start">
+          <div className="flex w-full items-center justify-center whitespace-nowrap rounded-full border border-amber-300 bg-white px-4 py-2 text-xs font-semibold tracking-wide text-amber-800 sm:px-5 sm:py-2.5 sm:text-sm lg:inline-flex lg:w-auto lg:justify-start">
             Digital Marketing Researcher
             <span className="mx-1.5 text-stone-400 sm:mx-2">•</span>
             Founder
