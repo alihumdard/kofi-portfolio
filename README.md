@@ -1,54 +1,16 @@
-# Trydo Portfolio Landing — Next.js (complete project)
+# React + Vite
 
-A rebuild of the Trydo portfolio landing page in Next.js (App Router) +
-Tailwind v4 + Framer Motion + TypeScript. This is a complete, runnable
-project — verified with a production build.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Run it
+Currently, two official plugins are available:
 
-```bash
-npm install
-npm run dev
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-Open http://localhost:3000
+## React Compiler
 
-Production:
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-```bash
-npm run build
-npm start
-```
+## Expanding the ESLint configuration
 
-## What's inside
-
-```
-app/
-  layout.tsx           Poppins font (next/font), metadata, smooth scroll
-  page.tsx             assembles all sections
-  globals.css          Tailwind v4
-  api/contact/route.ts contact form endpoint (currently logs; wire to Resend)
-components/
-  Header.tsx    fixed nav, scroll state, mobile drawer
-  Hero.tsx      full-height intro, staggered entrance
-  About.tsx     image + tabbed skills/awards/experience/education
-  Services.tsx  3x2 grid with pink hover flip
-  Portfolio.tsx 3x2 image cards, hover overlay + View Details
-  Blog.tsx      3 news cards
-  Contact.tsx   controlled form -> /api/contact (sending/sent/error states)
-  Footer.tsx    dark footer with socials
-  Reveal.tsx    reusable scroll-in animation wrapper
-  SectionTitle.tsx
-data/
-  services.ts  projects.ts  posts.ts   <- edit content here, not in components
-```
-
-## Notes
-
-- All images are picsum.photos placeholders (allowed in next.config.ts).
-  Replace with real files in public/images/ and update the src values in
-  data/*.ts, Hero.tsx, About.tsx, Contact.tsx.
-- Brand color: #f9004d. Font: Poppins via next/font/google (needs internet
-  on first build).
-- Contact form posts to /api/contact which validates and logs — swap the
-  TODO for Resend or Nodemailer for real email delivery.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
