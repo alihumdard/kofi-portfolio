@@ -32,23 +32,32 @@ export default function Header() {
     },
   ];
 
-  // Lock horizontal scroll permanently so the off-screen drawer can never bleed into view,
-  // and lock vertical scroll only while the drawer is open
+  // Lock horizontal scroll permanently so the off-screen drawer can never bleed into view
   useEffect(() => {
     document.body.style.overflowX = "hidden";
     document.documentElement.style.overflowX = "hidden";
   }, []);
 
+  // Fully lock background scroll while the drawer is open (position:fixed technique,
+  // reliable on iOS/mobile where overflow:hidden alone can still let the page scroll)
   useEffect(() => {
     if (mobileMenu) {
+      const scrollY = window.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
       document.body.style.overflowY = "hidden";
-    } else {
-      document.body.style.overflowY = "";
-    }
 
-    return () => {
-      document.body.style.overflowY = "";
-    };
+      return () => {
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.left = "";
+        document.body.style.right = "";
+        document.body.style.overflowY = "";
+        window.scrollTo(0, scrollY);
+      };
+    }
   }, [mobileMenu]);
 
   // Scroll event and active section detector
