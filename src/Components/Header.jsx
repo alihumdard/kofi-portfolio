@@ -32,17 +32,22 @@ export default function Header() {
     },
   ];
 
-  // Prevent background scrolling when mobile menu is open
+  // Lock horizontal scroll permanently so the off-screen drawer can never bleed into view,
+  // and lock vertical scroll only while the drawer is open
+  useEffect(() => {
+    document.body.style.overflowX = "hidden";
+    document.documentElement.style.overflowX = "hidden";
+  }, []);
+
   useEffect(() => {
     if (mobileMenu) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflowY = "hidden";
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflowY = "";
     }
 
-    // Cleanup function
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflowY = "";
     };
   }, [mobileMenu]);
 
@@ -51,7 +56,6 @@ export default function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
 
-      // Simple intersection observer behavior for active links
       const scrollPosition = window.scrollY + 120;
       for (const item of navItems) {
         const el = document.getElementById(item.id);
@@ -71,6 +75,17 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // Close drawer automatically if window is resized to desktop width
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && mobileMenu) {
+        setMobileMenu(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [mobileMenu]);
 
   return (
     <header
@@ -97,8 +112,8 @@ export default function Header() {
                   key={item.id}
                   href={`#${item.id}`}
                   onClick={() => setActiveSection(item.id)}
-                  className={`relative text-[15px] font-medium text-[#2E2E2E] transition-all duration-300 hover:text-black 
-                    after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:bg-[#2E2E2E] after:transition-all after:duration-300
+                  className={`relative no-underline text-[15px] font-medium text-[#2E2E2E] transition-all duration-300 hover:text-black 
+                    after:absolute after:left-0 after:bottom-[-6px] after:h-[1.5px] after:bg-[#2E2E2E] after:transition-all after:duration-300
                     ${
                       activeSection === item.id
                         ? "text-black after:w-full"
@@ -140,7 +155,8 @@ export default function Header() {
             {/* Hamburger Menu Button */}
             <button
               onClick={() => setMobileMenu(!mobileMenu)}
-              className="lg:hidden p-2 text-[#2E2E2E] hover:text-black transition-all duration-300 text-2xl transform hover:scale-110"
+              aria-label="Toggle menu"
+              className="lg:hidden p-2 text-[#2E2E2E] hover:text-black transition-all duration-300 text-2xl transform hover:scale-110 cursor-pointer"
             >
               <FaBars className="rotate-0 transition-transform duration-300" />
             </button>
@@ -150,7 +166,7 @@ export default function Header() {
 
       {/* Mobile Drawer Overlay Container */}
       <div
-        className={`fixed inset-0 z-100 lg:hidden transition-all duration-300 ${
+        className={`fixed inset-0 z-[100] lg:hidden transition-all duration-300 ${
           mobileMenu ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >
@@ -162,10 +178,10 @@ export default function Header() {
           onClick={() => setMobileMenu(false)}
         />
 
-        {/* Full Viewport Height Drawer */}
+        {/* Full Viewport Height Drawer — responsive width, never overflows small screens */}
         <div
-          className={`fixed top-0 right-0 h-screen w-80 bg-[#F8F6F1] shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${
-            mobileMenu ? "translate-x-0" : "translate-x-full"
+          className={`fixed top-0 right-0 h-screen w-full max-w-[320px] sm:max-w-[360px] bg-[#F8F6F1] shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${
+            mobileMenu ? "translate-x-0" : "translate-x-[110%]"
           }`}
         >
           {/* Header Section of Drawer */}
@@ -181,14 +197,15 @@ export default function Header() {
             {/* Close Button */}
             <button
               onClick={() => setMobileMenu(false)}
-              className="text-2xl text-[#2E2E2E] hover:text-black transition-colors duration-200"
+              aria-label="Close menu"
+              className="text-2xl text-[#2E2E2E] hover:text-black transition-colors duration-200 cursor-pointer"
             >
               ✕
             </button>
           </div>
 
           {/* Scrollable Nav Area */}
-          <div className="flex-1 overflow-y-auto py-4 flex flex-col">
+          <div className="flex-1 overflow-y-auto py-2 flex flex-col">
             {/* Navigation Links */}
             <div>
               {navItems.map((item, index) => (
@@ -202,18 +219,20 @@ export default function Header() {
                       setActiveSection(item.id);
                       setMobileMenu(false);
                     }}
-                    className={`relative inline-block text-[15px] font-semibold transition-all duration-300 group
-                      after:absolute after:left-0 after:bottom-1.5 after:h-0.5 after:bg-[#C68A2B] after:transition-all after:duration-300
+                    className={`relative inline-block no-underline text-[15px] font-semibold transition-all ease-out duration-300 group
+                      after:absolute after:left-0 after:bottom-[-6px] after:h-0.5 after:bg-[#C68A2B] after:transition-all after:duration-300
                       ${
                         activeSection === item.id
                           ? "text-[#C68A2B] after:w-3/4"
                           : "text-[#232323] hover:text-[#C68A2B] after:w-0 hover:after:w-3/4"
+                      }
+                      ${
+                        mobileMenu
+                          ? "opacity-100 translate-x-0"
+                          : "opacity-0 translate-x-5"
                       }`}
                     style={{
-                      animation: mobileMenu
-                        ? `slideIn 0.3s ease-out ${index * 50}ms forwards`
-                        : "none",
-                      opacity: 0,
+                      transitionDelay: mobileMenu ? `${index * 50}ms` : "0ms",
                     }}
                   >
                     {item.name}
@@ -222,7 +241,7 @@ export default function Header() {
               ))}
             </div>
 
-            {/* CTA Button placed immediately under the links list */}
+            {/* CTA Button */}
             <div className="px-6 py-6 mt-2">
               <a
                 href="#contact"
@@ -237,19 +256,6 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Slide-in Animation Keyframes */}
-          <style>{`
-            @keyframes slideIn {
-              from {
-                opacity: 0;
-                transform: translateX(20px);
-              }
-              to {
-                opacity: 1;
-                transform: translateX(0);
-              }
-            }
-          `}</style>
         </div>
       </div>
     </header>

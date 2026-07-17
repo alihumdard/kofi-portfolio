@@ -161,10 +161,8 @@ export default function About() {
             viewport={{ once: true }}
           >
             <div
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full
-                bg-[#F8F6F1]
-                border border-[#EAB308]
-                shadow-[0_4px_10px_rgba(234,179,8,0.12)]"
+              className="inline-flex rounded-full border border-[#E6D2A3] bg-[#FFF9EE] px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] sm:px-5
+                "
             >
               <span className="text-[#C28A00] text-sm font-semibold tracking-[0.25em] uppercase">
                 About Me
@@ -187,12 +185,18 @@ export default function About() {
 
             {/* Tabs */}
 
-            <div className="mt-6 flex flex-wrap justify-center gap-2 border-b border-gray-200 pb-3 lg:justify-start">
+            <div
+              className="mt-6 flex flex-nowrap items-center justify-start gap-1.5 sm:gap-2 overflow-x-auto border-b border-gray-200 pb-3 lg:flex-wrap lg:justify-start"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              <style>{`
+                .mt-6.flex.flex-nowrap::-webkit-scrollbar { display: none; }
+              `}</style>
               {tabs.map((tab, index) => (
                 <button
                   key={tab.label}
                   onClick={() => setActive(index)}
-                  className={`rounded-lg cursor-pointer px-4 py-2 text-sm font-semibold transition-all duration-300 ${
+                  className={`shrink-0 whitespace-nowrap rounded-lg cursor-pointer px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm font-semibold transition-all duration-300 ${
                     active === index
                       ? "bg-white shadow-md text-[#C68A2B] border border-gray-200"
                       : "text-gray-700 hover:bg-gray-100 hover:text-[#C68A2B]"
