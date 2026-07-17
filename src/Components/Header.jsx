@@ -189,7 +189,7 @@ export default function Header() {
 
         {/* Full Viewport Height Drawer — responsive width, never overflows small screens */}
         <div
-          className={`fixed top-0 right-0 h-screen w-full max-w-[320px] sm:max-w-[360px] bg-[#F8F6F1] shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${
+          className={`fixed top-0 right-0 h-screen w-full max-w-[250px] sm:max-w-[360px] bg-[#F8F6F1] shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${
             mobileMenu ? "translate-x-0" : "translate-x-[110%]"
           }`}
         >
